@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./cast-service.js"></script>
+    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+</head>
+
+<body>
+    <div style="max-width: 30px;">
+        <google-cast-launcher></google-cast-launcher>
+    </div>
+    <button id="play">Play</button>
+    <script>
+        let castService;
+        window['__onGCastApiAvailable'] = function (isAvailable) {
+            if (isAvailable) {
+                const stream = "https://d1chyo78gdexn4.cloudfront.net/vualto-demo/elephants-dream/elephants-dream.ism/manifest.mpd";
+                const token = 'vualto-demo|2020-01-31T09:47:42Z|RAQrLiTYv+Z8U9LrxO0JDw==|7aa0105ab97ebb7bf7cfbe8bea7fd400000f5f401';
+                castService = new CastService(stream, token);
+                castService.initCast();
+            }
+        };
+
+        document.getElementById('play').addEventListener('click', () => {
+            castService.play();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+body {
+    --playback-logo-image: url('./VUDRM-512x512.jpg');
+}
+
+cast-media-player {
+    --progress-color: rgb(146,212,0);
+    --splash-size: cover;
+}
